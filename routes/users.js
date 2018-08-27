@@ -27,8 +27,9 @@ router.get('/delete', function(req, res, next) {
 // create user
 router.get('/add', function(req, res, next) {
   //console.log(req.query)
-  let name = req.query;
-  query.addUser(name,function(rows){
+  let userInfo = req.query;
+  console.log(userInfo)
+  query.addUser(userInfo,function(rows){
     res.send(rows);
   })
 });

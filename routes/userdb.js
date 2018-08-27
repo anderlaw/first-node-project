@@ -11,9 +11,9 @@ module.exports.deleteUser = function(id,callback){
     })
 }
 module.exports.addUser = function(option,callback){
-
-    db("insert into user (user_name,address,phone,salary) values(?,?,?,?)",
-    [option.user_name,option.address,option.phone,option.salary],
+    console.log(option)
+    db("insert into user (user_name,address,phone,salary,register_date) values(?,?,?,?,?)",
+    [option.user_name,option.address,option.phone,option.salary,option.register_date],
     function(rows){
         callback(rows)
     })
