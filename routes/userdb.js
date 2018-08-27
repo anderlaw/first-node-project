@@ -21,8 +21,10 @@ module.exports.addUser = function(option,callback){
     //     callback(rows)
     // })
 }
-module.exports.updateUser = function(name,callback){
-    db("'update user set name='"+name+"'",function(rows){
+module.exports.updateUser = function(option,callback){
+    db("update user set user_name=?,address=?,phone=?,salary=? where user_id=?",
+    [option.user_name,option.address,option.phone,option.salary,option.user_id],
+    function(rows){
         callback(rows)
     })
 }

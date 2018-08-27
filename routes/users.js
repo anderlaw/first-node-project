@@ -28,8 +28,15 @@ router.get('/delete', function(req, res, next) {
 router.get('/add', function(req, res, next) {
   //console.log(req.query)
   let userInfo = req.query;
-  console.log(userInfo)
   query.addUser(userInfo,function(rows){
+    res.send(rows);
+  })
+});
+router.get('/update', function(req, res, next) {
+  //console.log(req.query)
+  let userInfo = req.query;
+  console.log(userInfo)
+  query.updateUser(userInfo,function(rows){
     res.send(rows);
   })
 });
