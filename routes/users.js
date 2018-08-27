@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var query = require('./userdb')
+var success = require('./pack.js').success;
 
 // get users list
 router.get('/list', function(req, res, next) {
@@ -8,7 +9,10 @@ router.get('/list', function(req, res, next) {
   // res.setHeader('Access-Control-Allow-Origin','*');
   query.queryUsers(function(rows){
     //console.log(rows)
-    res.send(rows);
+    res.send(success({
+      data:rows,
+      message:'请求成功！'
+    }));
   })
 });
 
