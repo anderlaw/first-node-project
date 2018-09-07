@@ -1,5 +1,6 @@
 var createError = require('http-errors');
 var express = require('express');
+var cookieParser = require('cookie-parser')
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
@@ -10,9 +11,7 @@ var ApiRouter = require("./api")
 
 App.use(function(req,res,next){
   // res.header('Access-Control-Allow-Origin', 'http://127.0.0.1:5500');
-  res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
-  res.header('Access-Control-Allow-Headers', 'Content-Type');
+  res.header('Access-Control-Allow-Origin', 'http://127.0.0.1:5500');
   res.header('Access-Control-Allow-Credentials','true');
   next();
 })
@@ -21,6 +20,7 @@ App.use(function(req,res,next){
 // App.set('view engine', 'jade');
 
 App.use(logger('dev'));
+App.use(cookieParser());
 App.use(express.json());
 App.use(express.urlencoded({ extended: false }));
 App.use(cookieParser());
